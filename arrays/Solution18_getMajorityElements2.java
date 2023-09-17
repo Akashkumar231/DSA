@@ -1,0 +1,78 @@
+package com.arrays;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution18_getMajorityElements2 {
+ 
+	public boolean isActualAnswer(int [] nums , int target) {
+		
+		int n = nums.length;
+		int freq = 0 ; 
+		
+		for(int val : nums) {
+			
+			if(val == target) {
+				
+				freq++;
+				
+			}
+			
+		}
+		
+		if(freq > n/3) return true;
+		else return false;
+	}
+	
+	public List<Integer> majorityElements(int [] nums){
+		
+		int majA = Integer.MIN_VALUE, leadA = 0;
+		
+		int majB = Integer.MAX_VALUE, leadB = 0;
+		
+		for(int val : nums) {
+			
+			if(val == majA) {
+				
+				leadA++;
+				
+			}else if(val == majB) {
+				
+				leadB++;
+				
+			}else if(leadA == 0) {
+				
+				majA = val;
+				leadA = 1;
+				
+			}else if(leadB == 0) {
+				
+				majB = val;
+				leadB = 1 ;
+				
+				
+			}else {
+				
+				leadA--;
+				leadB--;
+				
+			}
+			
+		}
+		
+		List<Integer>  answers = new ArrayList<>();
+		if(isActualAnswer(nums,majA)== true);
+		answers.add(majA);
+		if(isActualAnswer(nums,majB)==true)
+			answers.add(majB);
+		return answers; 
+		
+	}
+	
+	public static void main(String [] args) {
+		
+		
+		
+	}
+	
+}
