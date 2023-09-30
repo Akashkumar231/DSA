@@ -17,6 +17,8 @@ public class Solution1_reverseWords {
 				right --;
 				
 			}
+
+
 			
 	     	int	left = right ;
 			
